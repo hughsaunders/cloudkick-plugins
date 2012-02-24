@@ -3,7 +3,7 @@
 day_in_seconds=86400
 warn_days=3
 error_days=5
-age_file=/home/hugh3869/.backup_age
+age_file=/rsnapshot/daily.0/localhost/home/hugh3869/.backup_age
 
 seconds_behind=$(( $(date '+%s') - $(cat $age_file) ))
 
@@ -16,6 +16,6 @@ status="ok"
 message="backup age file $age_file on $(hostname) is $seconds_behind seconds ($days_behind days) behind the current time"
 
 echo "status $status $message"
-echo "metric seconds_behind $seconds_behind"
+echo "metric secondsbehind int $seconds_behind"
 
 
