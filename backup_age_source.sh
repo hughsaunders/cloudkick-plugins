@@ -10,8 +10,8 @@ seconds_behind=$(( $(date '+%s') - $(cat $age_file) ))
 days_behind=$(echo "scale=4; $seconds_behind/$day_in_seconds"|bc)
 
 status="ok"
-[[ $days_behind > 2 ]] && status = "warn"
-[[ $days_behind > 4 ]] && status = "err"
+[[ $days_behind > 2 ]] && status="warn"
+[[ $days_behind > 4 ]] && status="err"
 
 message="backup age file $age_file on $(hostname) is $seconds_behind seconds ($days_behind days) behind the current time"
 
