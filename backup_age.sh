@@ -12,8 +12,8 @@ days_behind=$(echo "scale=4; $seconds_behind/$day_in_seconds"|bc)
 grep '^\.' <<<$days_behind && days_behind="0$days_behind"
 
 status="ok"
-[[ "$days_behind" > 2 ]] && status="warn"
-[[ "$days_behind" > 4 ]] && status="err"
+[[ "$days_behind" > "$warn_days" ]] && status="warn"
+[[ "$days_behind" > "$error_days" ]] && status="err"
 
 message="backup age file $age_file on $(hostname) is $seconds_behind seconds ($days_behind days) behind the current time"
 
