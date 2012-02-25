@@ -9,7 +9,7 @@ error_days="$3"
 seconds_behind=$(( $(date '+%s') - $(cat $age_file) ))
 
 days_behind=$(echo "scale=4; $seconds_behind/$day_in_seconds"|bc)
-grep '^\.' <<<$days_behind && days_behind="0$days_behind"
+grep '^\.' <<<$days_behind &>/dev/null && days_behind="0$days_behind"
 
 status="ok"
 [[ "$days_behind" > "$warn_days" ]] && status="warn"
